@@ -1,10 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends "base_generic.html" %}
+
+{% block title %} Profile {% endblock %}
+
+{% block content %}
+    <h2>Профиль пользователя {{ user.username }}</h2>
+    {% if user.first_name and user.last_name %}
+        <p>Hi, {{ user.first_name }} {{ user.last_name }}!</p>
+    {% else %}
+        <p>Hello!</p>
+    {% endif %}
+    <a href="{% url 'index' %}">Go home</a>
+{% endblock %}

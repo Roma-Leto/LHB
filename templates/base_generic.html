@@ -39,7 +39,7 @@
     <div>
         {% if user.is_authenticated %}
             <p>
-                Hi, {{  user.username }}!
+                Hi, {{  user.username }}! <a href="{% url 'profile' %}">Profile</a>
             </p>
             <p>
                 <a style="font-size: 16px" href="{% url 'create_post' %}">Создать запись</a>

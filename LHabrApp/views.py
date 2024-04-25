@@ -4,6 +4,12 @@ from .forms import PostForm
 from .models import Post
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
+
+
+@login_required
+def profile(request):
+    return render(request, 'LHabrApp/profile.html')
 
 
 class LLogoutView(LoginRequiredMixin, LogoutView):
