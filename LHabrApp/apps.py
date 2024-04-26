@@ -1,6 +1,10 @@
 from django.apps import AppConfig
+from django.dispatch import Signal
 
 
 class LhabrappConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
     name = 'LHabrApp'
+
+
+user_registered = Signal('instance')

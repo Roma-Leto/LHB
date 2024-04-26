@@ -5,6 +5,15 @@ from .models import Post
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
+#rest
+from rest_framework import generics
+from LHabrApp.serializers import PostSerializer
+
+
+class PostAPIView(generics.ListAPIView):
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
+
 
 
 @login_required
