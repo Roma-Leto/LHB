@@ -73,6 +73,7 @@ WSGI_APPLICATION = 'LHabrWeb.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
+
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'u2580261_default',
@@ -84,12 +85,15 @@ DATABASES = {
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
         },
     },
+
     # Database stub to debug without internet connection
+
     # 'default': {
     #     'ENGINE': 'django.db.backends.sqlite3',
     #     #'NAME': ':memory:',
     #     'NAME': 'db.sqlite3',
     # }
+
 }
 
 

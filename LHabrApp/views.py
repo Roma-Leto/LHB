@@ -8,12 +8,28 @@ from django.contrib.auth.decorators import login_required
 #rest
 from rest_framework import generics
 from LHabrApp.serializers import PostSerializer
+#signal
+from django.views.generic.edit import CreateView
+from .forms import RegUserForm
+from LHabrApp.models import CustomUser
+from django.urls import reverse_lazy
+from django.views.generic.base import TemplateView
+
+
+class RegisterDoneView(TemplateView):
+    template_name = 'LHabrApp/register_done.html'
+
+
+class RegUserView(CreateView):
+    model = CustomUser
+    template_name = 'LHabrApp/register_user.html'
+    form_class = RegUserForm
+    success_url = reverse_lazy('register_done')
 
 
 class PostAPIView(generics.ListAPIView):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
-
 
 
 @login_required
@@ -59,5 +75,4 @@ def create_post(request):
             return redirect('blog_pg')  # перенаправление на главную страницу
     else:
         form = PostForm()
-
     return render(request, 'LHabrApp/create_post.html', {'form': form})
